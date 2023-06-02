@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>E-Donations</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,500|Dosis:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/ionicons.min.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="css/icomoon.css">
+  <link rel="stylesheet" href="css/fancybox.min.css">
+
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Nav Head -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">E-Donations</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="index.html" class="nav-link">Donor</a></li>
+          <li class="nav-item"><a href="" class="nav-link" id="signout">Log Out</a></li>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <li class="nav-item mt-1 u-icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="34"
+              height="34" viewBox="0,0,256,256" style="fill:#000000;">
+              <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                style="mix-blend-mode: normal">
+                <g transform="scale(8,8)">
+                  <path
+                    d="M16,5c-3.85547,0 -7,3.14453 -7,7c0,2.41016 1.23047,4.55078 3.09375,5.8125c-3.56641,1.53125 -6.09375,5.07031 -6.09375,9.1875h2c0,-4.42969 3.57031,-8 8,-8c4.42969,0 8,3.57031 8,8h2c0,-4.11719 -2.52734,-7.65625 -6.09375,-9.1875c1.86328,-1.26172 3.09375,-3.40234 3.09375,-5.8125c0,-3.85547 -3.14453,-7 -7,-7zM16,7c2.77344,0 5,2.22656 5,5c0,2.77344 -2.22656,5 -5,5c-2.77344,0 -5,-2.22656 -5,-5c0,-2.77344 2.22656,-5 5,-5z">
+                  </path>
+                </g>
+              </g>
+            </svg>
+            <br>
+            <div class="container-fluid ">
+
+            </div>
+          </li>
+          <br>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </nav>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <!-- End Nav -->
+
+  <!-- User DashBoard -->
+
+  <!-- Select Category -->
+  <div class="container p-3 mt-5 border rounded panelDiv">
+    <h1 class="text-center">Donate Something</h1> <br>
+    <h3>Select What You Want To Donate With Us</h3>
+    <div class="container dropdown">
+      <button class="btn mt-3 dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Select Category
+      </button>
+      <div class="dropdown-menu" id="sel" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" type="button" id="$csh" value="Cash">Cash</button>
+        <button class="dropdown-item" type="button" id="grcy" value="Grocery">Grocery</button>
+        <button class="dropdown-item" type="button" id="food" value="Food">Food</button>
+        <button class="dropdown-item" type="button" id="clth" value="Clothes">Clothes</button>
+        <button class="dropdown-item" type="button" id="gds" value="Other Goods">Other Goods</button>
+      </div>
+
+      <!-- For Cash Donation -->
+
+      <div class="input-group mb-3 d-none mt-3" id="d-inp">
+
+        <span class="input-group-text">Rupees</span>
+        <!-- <span class="input-group-text" id="cchg" value="00">0.00</span> -->
+        <input type="number" class="form-control rounded" value="0"
+          aria-label="Dollar amount (with dot and two decimal places)">
+      </div>
+
+
+      <!-- For Grocery Donation -->
+
+      <div class="input-group mb-3 d-none mt-3" id="d-inp-grcy">
+
+        <span class="input-group-text">Grocery Items</span>
+        <span class="input-group-text">
+          <div class="container dropdown">
+            <span class=" dropdown-toggle" type="button" id="down1" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Select Quantity
+            </span>
+            <div class="dropdown-menu" id="grcy-qnty" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" value="Small Amount">Small Amount</button>
+              <button class="dropdown-item" value="Medium Amount">Medium Amount</button>
+              <button class="dropdown-item" value="Large Amount">Large Amount</button>
+            </div>
+          </div>
+        </span>
+
+        <input type="number" class="form-control rounded" placeholder="Grocery Items"
+          >
+      </div>
+      <!-- For Food Donation -->
+
+      <div class="input-group mb-3 d-none mt-3" id="d-inp-food">
+
+
+        <span class="input-group-text">
+          <div class="container dropdown">
+            <span class=" dropdown-toggle" type="button" id="down2" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Select Quantity
+            </span>
+            <div class="dropdown-menu" id="food-qnty">
+              <button class="dropdown-item" value="Small Amount">Small Amount</button>
+              <button class="dropdown-item" value="Medium Amount">Medium Amount</button>
+              <button class="dropdown-item" value="Large Amount">Large Amount</button>
+            </div>
+          </div>
+        </span>
+      </div>
+
+      <!-- For Clothes Donation  -->
+
+      <div class="input-group mb-3 d-none mt-3" id="d-inp-clth">
+
+        <span class="input-group-text">Clothes</span>
+        <span class="input-group-text">
+          <div class="container dropdown">
+            <span class=" dropdown-toggle" type="button" id="down3" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Select Category
+            </span>
+            <div class="dropdown-menu" id="clth-cat">
+              <button class="dropdown-item" value="Warm Clothes">Warm Clothes</button>
+              <button class="dropdown-item" value="Light Clothes">Light Clothes</button>
+              <button class="dropdown-item" value=" Cloth Sheets">Cloth Sheets</button>
+            </div>
+          </div>
+        </span>
+
+        <input type="number" class="form-control rounded" name="qty" id="" value="0">
+
+      </div>
+
+      <!-- For Goods Donation -->
+
+      <div class="input-group mb-3 d-none mt-3" id="d-inp-goods">
+
+        <span class="input-group-text">Goods Item</span>
+        <input type="text" class="form-control rounded" name="qty" id="" placeholder="Enter Items.">
+        <span class="input-group-text">Quantity</span>
+        <input type="number" class="form-control rounded" name="qty" id="" value="0">
+
+      </div>
+
+
+
+
+      <!-- Donate Button -->
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="text-right mt-3 btn ms-5">Donate</button>
+
+      </div>
+      <script>
+
+        var cash = document.getElementById("$csh")
+        var grocery = document.getElementById("grcy")
+        var food = document.getElementById("food")
+        var cloth = document.getElementById("clth")
+        var goods = document.getElementById("gds")
+        var ccsh = document.getElementById("cchg")
+
+        // Date Picker Jquery
+
+
+
+
+        // For DropDown Values
+
+
+        var select = document.getElementById("sel")
+        select.addEventListener("click", e => {
+
+          console.log(e.target.value)
+          // firebase.database().ref("users/").push(e.target.value)
+          var content = document.getElementById("dropdownMenu2")
+
+          content.innerHTML = `${e.target.value}`
+          e.preventDefault()
+
+        })
+
+
+        // For Grocery Items
+
+        var grcy_qnty = document.getElementById("grcy-qnty")
+
+        grcy_qnty.addEventListener("click", e => {
+
+          console.log(e.target.value)
+          // firebase.database().ref("users/").push(e.target.value)
+
+          var toast = document.getElementById("down1")
+
+          toast.innerHTML = `${e.target.value}`
+
+
+        })
+
+        // For Food Items
+
+        var food_qnty = document.getElementById("food-qnty")
+        food_qnty.addEventListener("click", e => {
+          console.log(e.target.value)
+          // firebase.database().ref("users/").push(e.target.value)
+          var toast1 = document.getElementById("down2")
+          toast1.innerHTML = `${e.target.value}`
+          })
+
+          // For Clothes 
+
+          var clth_cat = document.getElementById("clth-cat")
+          clth_cat.addEventListener("click", e => {
+            console.log(e.target.value)
+            // firebase.database().ref("users/").push(e.target.value)
+            var toast2 = document.getElementById("down3")
+            toast2.innerHTML = `${e.target.value}`
+            })
+
+        ////////////Display and hide input
+
+
+        cash.addEventListener("click", e => {
+
+          var d = document.getElementById("d-inp")
+          var g = document.getElementById("d-inp-grcy")
+          var f = document.getElementById("d-inp-food")
+          var c = document.getElementById("d-inp-clth")
+          var b = document.getElementById("d-inp-goods")
+
+          g.classList.add("d-none")
+          f.classList.add("d-none")
+          c.classList.add("d-none")
+          b.classList.add("d-none")
+          d.classList.remove("d-none")
+        })
+        grocery.addEventListener("click", e => {
+          var d = document.getElementById("d-inp")
+          var g = document.getElementById("d-inp-grcy")
+          var f = document.getElementById("d-inp-food")
+          var c = document.getElementById("d-inp-clth")
+          var b = document.getElementById("d-inp-goods")
+
+          d.classList.add("d-none")
+          g.classList.remove("d-none")
+          f.classList.add("d-none")
+          b.classList.add("d-none")
+          c.classList.add("d-none")
+
+        })
+        food.addEventListener("click", e => {
+          var d = document.getElementById("d-inp")
+          var g = document.getElementById("d-inp-grcy")
+          var f = document.getElementById("d-inp-food")
+          var c = document.getElementById("d-inp-clth")
+          var b = document.getElementById("d-inp-goods")
+
+          f.classList.remove("d-none")
+          c.classList.add("d-none")
+          b.classList.add("d-none")
+          d.classList.add("d-none")
+          g.classList.add("d-none")
+        })
+        cloth.addEventListener("click", e => {
+          var d = document.getElementById("d-inp")
+          var g = document.getElementById("d-inp-grcy")
+          var f = document.getElementById("d-inp-food")
+          var c = document.getElementById("d-inp-clth")
+          var b = document.getElementById("d-inp-goods")
+
+          d.classList.add("d-none")
+          g.classList.add("d-none")
+          f.classList.add("d-none")
+          c.classList.remove("d-none")
+          b.classList.add("d-none")
+        })
+        goods.addEventListener("click", e => {
+          var d = document.getElementById("d-inp")
+          var g = document.getElementById("d-inp-grcy")
+          var f = document.getElementById("d-inp-food")
+          var c = document.getElementById("d-inp-clth")
+          var b = document.getElementById("d-inp-goods")
+
+          d.classList.add("d-none")
+          g.classList.add("d-none")
+          f.classList.add("d-none")
+          c.classList.add("d-none")
+          b.classList.remove("d-none")
+        })
+
+      </script>
+    </div>
+  </div>
+
+
+  <!-- End User DashBoard -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-6 col-lg-4">
+          <h3 class="heading-section">About Us</h3>
+          <p class="lead">At Shine-On-Trust, we are a non-profit organization/charitable foundation dedicated to making
+            a positive impact On needy poor peoples to help them out. </p>
+          <p class="mb-5">Ease For Donors and needy peoples.</p>
+          <!-- <p><a href="#" class="link-underline">Read More</a></p> -->
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <h3 class="heading-section">Social Connection</h3>
+          <div class="block-21 d-flex mb-4">
+            <figure class="mr-3">
+              <img
+                src="https://w7.pngwing.com/pngs/477/596/png-transparent-computer-icons-facebook-blog-facebook-logo-desktop-wallpaper-facebook-icon.png"
+                alt="" class="img-fluid">
+            </figure>
+            <div class="mt-4 text">
+              <h3 class="heading"><a href="https://www.facebook.com/profile.php?id=100093372276060">Contact at Our Facebook Page</a></h3>
+            </div>
+          </div>
+
+          <div class="block-21 d-flex mb-4">
+            <figure class="mr-3">
+              <img src="images/instaa.png" alt="" class="img-fluid">
+            </figure>
+            <div class="mt-4 text">
+              <h3 class="heading"><a href="https://www.instagram.com/shine.on.trust/">Visit Our Instagram</a></h3>
+            </div>
+          </div>
+
+          <div class="block-21 d-flex mb-4">
+            <figure class="mr-3">
+              <img src="images/tweeter.png" alt="" class="img-fluid">
+            </figure>
+            <div class="text mt-4">
+              <h3 class="heading"><a href="https://twitter.com/ShineOnTru47393">Visit Our Latest Tweets</a></h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="block-23">
+            <h3 class="heading-section">Get Connected</h3>
+            <ul>
+              <li><span class="icon icon-map-marker"></span><span class="text">We are right now not physically
+                  available.</span></li>
+              <li><a href=""><span class="icon icon-phone"></span><span class="text">+92 313 358 962 3</span></a></li>
+              <li><a href=""><span class="icon icon-envelope"></span>
+                <span class="text">shineontrust@gmail.com</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="row pt-5">
+        <div class="col-md-12 text-center">
+
+          <p>
+
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved by E-Donation
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+        stroke="#F96D00" />
+    </svg></div>
+
+  <!-- Scripts -->
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="./config/Firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyC0Rep6BsjzWWrV12vSI3f7PlZ4BHX11iI",
+      authDomain: "e-donor420.firebaseapp.com",
+      projectId: "e-donor420",
+      storageBucket: "e-donor420.appspot.com",
+      messagingSenderId: "50437596188",
+      appId: "1:50437596188:web:d7c70ba137cccbec42ebd9",
+      measurementId: "G-CJM2T5ETKL"
+    };
+
+
+    firebase.initializeApp(firebaseConfig)
+  </script>
+  <script src="js/jquery.fancybox.min.js"></script>
+
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
