@@ -9,6 +9,16 @@ body {
     border: none !important;
     caret-color: rgba(231, 175, 8, 0.925)  ;
   }
+  .navbar-toggler:focus{
+    outline:none !important;
+
+  }
+  #signout:hover{
+    cursor: pointer;
+    color: white !important;
+    transition: ease-in-out 200ms;
+    
+  }
   .x-line1{
     width: 70%;
     border: 1px solid black;

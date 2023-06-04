@@ -29,7 +29,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">E-Donations</a>
+      <a class="navbar-brand" href="index.html">Shine-On-Trust</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
         aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
@@ -38,8 +38,8 @@
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="index.html" class="nav-link">Donor</a></li>
-          <li class="nav-item"><a href="" class="nav-link" id="signout">Log Out</a></li>
+          <li class="nav-item active"><a href="#" class="nav-link">Donor</a></li>
+          <li class="nav-item mt-2 active" id="signout">Log Out</li>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <li class="nav-item mt-1 u-icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="34"
               height="34" viewBox="0,0,256,256" style="fill:#000000;">
@@ -55,9 +55,6 @@
               </g>
             </svg>
             <br>
-            <div class="container-fluid ">
-
-            </div>
           </li>
           <br>
         </ul>
@@ -93,7 +90,7 @@
 
         <span class="input-group-text">Rupees</span>
         <!-- <span class="input-group-text" id="cchg" value="00">0.00</span> -->
-        <input type="number" class="form-control rounded" value="0"
+        <input type="number" class="form-control rounded" id="cashamount" placeholder="Enter Amount"
           aria-label="Dollar amount (with dot and two decimal places)">
       </div>
 
@@ -117,7 +114,7 @@
           </div>
         </span>
 
-        <input type="number" class="form-control rounded" placeholder="Grocery Items"
+        <input type="text" class="form-control rounded" id="groceryitem1" placeholder="Grocery Items"
           >
       </div>
       <!-- For Food Donation -->
@@ -159,7 +156,7 @@
           </div>
         </span>
 
-        <input type="number" class="form-control rounded" name="qty" id="" value="0">
+        <input type="number" class="form-control rounded" name="qty" id="clothvall" value="0">
 
       </div>
 
@@ -168,9 +165,9 @@
       <div class="input-group mb-3 d-none mt-3" id="d-inp-goods">
 
         <span class="input-group-text">Goods Item</span>
-        <input type="text" class="form-control rounded" name="qty" id="" placeholder="Enter Items.">
+        <input type="text" class="form-control rounded" name="qty" id="gooditem1" placeholder="Enter Items.">
         <span class="input-group-text">Quantity</span>
-        <input type="number" class="form-control rounded" name="qty" id="" value="0">
+        <input type="number" class="form-control rounded" name="qty" id="goodval" value="0">
 
       </div>
 
@@ -179,154 +176,19 @@
 
       <!-- Donate Button -->
       <div class="d-flex justify-content-center">
-        <button type="submit" class="text-right mt-3 btn ms-5">Donate</button>
+        <button type="submit" class="text-right mt-3 btn ms-5" id="donate_data">Donate</button>
+        <button type="submit" class="text-right mt-3 btn ms-5" onclick="getdata()">show result</button>
+
 
       </div>
-      <script>
-
-        var cash = document.getElementById("$csh")
-        var grocery = document.getElementById("grcy")
-        var food = document.getElementById("food")
-        var cloth = document.getElementById("clth")
-        var goods = document.getElementById("gds")
-        var ccsh = document.getElementById("cchg")
-
-        // Date Picker Jquery
-
-
-
-
-        // For DropDown Values
-
-
-        var select = document.getElementById("sel")
-        select.addEventListener("click", e => {
-
-          console.log(e.target.value)
-          // firebase.database().ref("users/").push(e.target.value)
-          var content = document.getElementById("dropdownMenu2")
-
-          content.innerHTML = `${e.target.value}`
-          e.preventDefault()
-
-        })
-
-
-        // For Grocery Items
-
-        var grcy_qnty = document.getElementById("grcy-qnty")
-
-        grcy_qnty.addEventListener("click", e => {
-
-          console.log(e.target.value)
-          // firebase.database().ref("users/").push(e.target.value)
-
-          var toast = document.getElementById("down1")
-
-          toast.innerHTML = `${e.target.value}`
-
-
-        })
-
-        // For Food Items
-
-        var food_qnty = document.getElementById("food-qnty")
-        food_qnty.addEventListener("click", e => {
-          console.log(e.target.value)
-          // firebase.database().ref("users/").push(e.target.value)
-          var toast1 = document.getElementById("down2")
-          toast1.innerHTML = `${e.target.value}`
-          })
-
-          // For Clothes 
-
-          var clth_cat = document.getElementById("clth-cat")
-          clth_cat.addEventListener("click", e => {
-            console.log(e.target.value)
-            // firebase.database().ref("users/").push(e.target.value)
-            var toast2 = document.getElementById("down3")
-            toast2.innerHTML = `${e.target.value}`
-            })
-
-        ////////////Display and hide input
-
-
-        cash.addEventListener("click", e => {
-
-          var d = document.getElementById("d-inp")
-          var g = document.getElementById("d-inp-grcy")
-          var f = document.getElementById("d-inp-food")
-          var c = document.getElementById("d-inp-clth")
-          var b = document.getElementById("d-inp-goods")
-
-          g.classList.add("d-none")
-          f.classList.add("d-none")
-          c.classList.add("d-none")
-          b.classList.add("d-none")
-          d.classList.remove("d-none")
-        })
-        grocery.addEventListener("click", e => {
-          var d = document.getElementById("d-inp")
-          var g = document.getElementById("d-inp-grcy")
-          var f = document.getElementById("d-inp-food")
-          var c = document.getElementById("d-inp-clth")
-          var b = document.getElementById("d-inp-goods")
-
-          d.classList.add("d-none")
-          g.classList.remove("d-none")
-          f.classList.add("d-none")
-          b.classList.add("d-none")
-          c.classList.add("d-none")
-
-        })
-        food.addEventListener("click", e => {
-          var d = document.getElementById("d-inp")
-          var g = document.getElementById("d-inp-grcy")
-          var f = document.getElementById("d-inp-food")
-          var c = document.getElementById("d-inp-clth")
-          var b = document.getElementById("d-inp-goods")
-
-          f.classList.remove("d-none")
-          c.classList.add("d-none")
-          b.classList.add("d-none")
-          d.classList.add("d-none")
-          g.classList.add("d-none")
-        })
-        cloth.addEventListener("click", e => {
-          var d = document.getElementById("d-inp")
-          var g = document.getElementById("d-inp-grcy")
-          var f = document.getElementById("d-inp-food")
-          var c = document.getElementById("d-inp-clth")
-          var b = document.getElementById("d-inp-goods")
-
-          d.classList.add("d-none")
-          g.classList.add("d-none")
-          f.classList.add("d-none")
-          c.classList.remove("d-none")
-          b.classList.add("d-none")
-        })
-        goods.addEventListener("click", e => {
-          var d = document.getElementById("d-inp")
-          var g = document.getElementById("d-inp-grcy")
-          var f = document.getElementById("d-inp-food")
-          var c = document.getElementById("d-inp-clth")
-          var b = document.getElementById("d-inp-goods")
-
-          d.classList.add("d-none")
-          g.classList.add("d-none")
-          f.classList.add("d-none")
-          c.classList.add("d-none")
-          b.classList.remove("d-none")
-        })
-
-      </script>
+      
     </div>
   </div>
 
 
   <!-- End User DashBoard -->
 
-  <footer class="footer">
+  <footer class="footer mt-3">
     <div class="container">
       <div class="row mb-5">
         <div class="col-md-6 col-lg-4">
@@ -369,7 +231,7 @@
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="block-23">
-            <h3 class="heading-section">Get Connected</h3>
+            <h3 class="heading-section" >Get Connected </h3>
             <ul>
               <li><span class="icon icon-map-marker"></span><span class="text">We are right now not physically
                   available.</span></li>
