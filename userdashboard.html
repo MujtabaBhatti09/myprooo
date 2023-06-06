@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>E-Donations</title>
+  <title>Shine-On-Trust</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body onload="winLoad()">
   <!-- Nav Head -->
 
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark" id="ftco-navbar">
@@ -38,7 +38,7 @@
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="#" class="nav-link">Donor</a></li>
+          <li class="nav-item active" id="donorName"><a href="#" class="nav-link">Donor</a></li>
           <li class="nav-item mt-2 active" id="signout">Log Out</li>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <li class="nav-item mt-1 u-icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="34"
@@ -177,11 +177,19 @@
       <!-- Donate Button -->
       <div class="d-flex justify-content-center">
         <button type="submit" class="text-right mt-3 btn ms-5" id="donate_data">Donate</button>
-        <button type="submit" class="text-right mt-3 btn ms-5" onclick="getdata()">show result</button>
+        <button type="submit" class="text-right mt-3 btn ms-5" id="shwresss" onclick="getdata()">show result</button>
 
 
       </div>
       
+    </div>
+  </div>
+
+  <div class="container p-3 mt-5 border rounded d-none panelDiv" id="hdeRes">
+    <h1 class="text-center">Donation Result</h1>
+    <div class="border container" id="shwData">
+
+
     </div>
   </div>
 

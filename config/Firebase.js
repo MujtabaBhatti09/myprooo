@@ -14,18 +14,6 @@ var grcy_qnty_data = "";
 var donnate_type = "";
 
 
-function getdata(){
-  var id = localStorage.getItem("Current_User UID");
-  // console.log(firebase)
-  firebase.database().ref(`/users/${id}`).child(`donnate`).once('value', (snap) => {
-
-    const data11 = snap.toJSON()
-    console.log(Object.values(data11))
-    
-  })
-  
-}
-
 
 if (signup != undefined || signup != null) {
   signup.addEventListener("click", (e) => {
@@ -130,40 +118,6 @@ signout.addEventListener("click", () => {
   window.location.replace("signin.html");
 });
 
-//   var sndmsg = document.getElementById("sndmsg1")
-
-//   sndmsg.addEventListener("click", e => {
-//     console.log("msd")
-//   })
-// For Clothes
-
-//   donatee.addEventListener("click", (e) => {
-
-//     var obj1 = {
-
-//          select: sel.value,
-
-//          Charity: cash.innerText,
-
-//          Grocery_Items: itemsgrcy.innerText,
-
-//          GroceryQuantity : grcy_qnty.value ,
-
-//         //  Food_Item: food_qnty.value,
-
-//          Clothes: clth_cat.value,
-
-//          Clothes_Quantity: clthvall.innerText,
-
-//          Other_Goods: goodtext.innerText,
-
-//          Goods_Quantity: gooddval.innerText,
-
-//         }
-
-//     firebase.database().ref("users/").child("uid/").child("Donation/").push(e.obj1.innerHTML)
-
-//   })
 
 ////////////Display and hide input
 
@@ -298,85 +252,67 @@ donate_data.addEventListener("click", () => {
   let key = firebase
     .database()
     .ref("users/")
-    .child(id + "/donnate")
+    .child(id + "/Donate")
     .push().key;
 
   donnate_type == "Cash"
     ? firebase
-        .database()
-        .ref("users/")
-        .child(id + "/donnate/" + key.toString())
-        .set({
-          donnate_key: key,
-          donnate_type: donnate_type,
-          donnate_value: cashamount.value,
-        })
+      .database()
+      .ref("users/")
+      .child(id + "/Donate/" + key.toString())
+      .set({
+        Donate_Key: key,
+        Donate_Type: donnate_type,
+        Donate_Value: cashamount.value,
+      })
     : donnate_type == "Grocery"
-    ? // console.log(groceryitem1.value)
+      ? // console.log(groceryitem1.value)
 
       firebase
         .database()
         .ref("users/")
-        .child(id + "/donnate/" + key.toString())
+        .child(id + "/Donate/" + key.toString())
         .set({
-          donnate_key: key,
-          donnate_type: donnate_type,
-          item: grcy_qnty_data,
-          donnate_value: groceryitem1.value,
+          Donate_Key: key,
+          Donate_Type: donnate_type,
+          Item: grcy_qnty_data,
+          Donate_Value: groceryitem1.value,
         })
-    : donnate_type == "Food"
-    ? firebase
-        .database()
-        .ref("users/")
-        .child(id + "/donnate/" + key.toString())
-        .set({
-          donnate_key: key,
-          donnate_type: donnate_type,
-          item: document.getElementById("down2").innerText,
-          donnate_value: "",
-        })
-    : donnate_type == "Clothes"
-    ? firebase
-        .database()
-        .ref("users/")
-        .child(id + "/donnate/" + key.toString())
-        .set({
-          donnate_key: key,
-          donnate_type: donnate_type,
-          item: document.getElementById("down3").innerText,
-          donnate_value: clothval.value,
-        })
-    : donnate_type == "Other Goods"
-    ? firebase
-        .database()
-        .ref("users/")
-        .child(id + "/donnate/" + key.toString())
-        .set({
-          donnate_key: key,
-          donnate_type: donnate_type,
-          item:gooditem1.value,
-          donnate_value:goodvall.value,
-        })
-    : console.log("new data");
+      : donnate_type == "Food"
+        ? firebase
+          .database()
+          .ref("users/")
+          .child(id + "/Donate/" + key.toString())
+          .set({
+            Donate_Key: key,
+            Donate_Type: donnate_type,
+            Item: document.getElementById("down2").innerText,
 
-  // firebase.database().ref("users/").child(id+"/donnate/"+key.toString()).set({
-  //    donnate_key:key,
-  //    donnate_type:donnate_type,
-  //   donnate_value: cashamount.value!="" ?
-  //    cashamount.value :
-  //   grcy_qnty.value !=""
-  //   ?
-  //   grcy_qnty.value : "test"
+          })
+        : donnate_type == "Clothes"
+          ? firebase
+            .database()
+            .ref("users/")
+            .child(id + "/Donate/" + key.toString())
+            .set({
+              Donate_Key: key,
+              Donate_Type: donnate_type,
+              Item: document.getElementById("down3").innerText,
+              Donate_Value: clothval.value,
+            })
+          : donnate_type == "Other Goods"
+            ? firebase
+              .database()
+              .ref("users/")
+              .child(id + "/Donate/" + key.toString())
+              .set({
+                Donate_Key: key,
+                Donate_Type: donnate_type,
+                Item: gooditem1.value,
+                Donate_Value: goodvall.value,
+              })
+            : console.log("new data");
 
-  //    Grocery_Item: groceryitem1.value,
-  //    Grocery_Quantity: grcy_qnty.value,
-  //    Food_Quantity: food_qnty.value,
-  //    Clothes_Type: clth_cat.value,
-  //    Clothes_Quantity: clothval.value,
-  //    Other_Goods: groceryitem1.value,
-  //    Good_Quantity: goodvall.value
-
-  // })
 });
 
 // Pushing GoodItem Donation To Database
@@ -384,17 +320,11 @@ donate_data.addEventListener("click", () => {
 var gooditem1 = document.getElementById("gooditem1");
 var goodvall = document.getElementById("goodval");
 
-
-
-// var data = localStorage.
-
 // End Goods
 
 // Pushing Clothes Donation To Database
 
 var clothval = document.getElementById("clothvall");
-
-
 
 // clth_cat == category selection already get as clth_cat
 
@@ -419,3 +349,75 @@ var groceryitem1 = document.getElementById("groceryitem1");
 var cashamount = document.getElementById("cashamount");
 
 // End Cash
+
+
+
+
+function getData1() {
+
+  var fname = document.getElementById("fname").value
+  var uemail = document.getElementById("uemail").value
+  var subject = document.getElementById("subject").value
+  var msgbox = document.getElementById("messagebox").value
+
+  firebase.database().ref("Users_Feedback/").set({
+
+    Name: fname,
+    Email: uemail,
+    Subject: subject,
+    Message: msgbox,
+
+  })
+
+}
+
+
+function winLoad() {
+
+  var dName = document.getElementById("donorName")
+
+  var id2 = localStorage.getItem("Current_User UID")
+
+  console.log(id2)
+
+  firebase.database().ref("users/").child(id2 + "/").once('value', snap => {
+    var objj = snap.toJSON()
+    console.log(Object.values(objj).at(4))
+    dName.innerHTML = `<li class="nav-item active mx-2"><a href="#" class="nav-link">${Object.values(objj).at(4)}</a></li>`
+  })
+
+}
+
+
+
+
+
+function getdata() {
+  
+  var hdeRes = document.getElementById("hdeRes")
+  hdeRes.classList.remove("d-none")
+  var shwresss = document.getElementById("shwresss")
+  shwresss.style.display = "none"
+
+  var shwData = document.getElementById("shwData")
+
+  var id = localStorage.getItem("Current_User UID");
+  // console.log(firebase)
+  firebase.database().ref(`/users/${id}`).child(`Donate`).once('value', (snap) => {
+
+    const data11 = snap.toJSON()
+    const shwData1 = Object.values(data11)
+
+    console.log(shwData1)
+
+    shwData.innerHTML = `<h3>${shwData1.at(0).Donate_Type} : ${shwData1.at(0).Donate_Value}</h3>
+    <h3>${shwData1.at(1).Donate_Type} : ${shwData1.at(1).Donate_Value} : ${shwData1.at(1).Item}</h3>
+    <h3>${shwData1.at(2).Donate_Type} : ${shwData1.at(2).Donate_Value} : ${shwData1.at(2).Item}</h3>
+    <h3>${shwData1.at(3).Donate_Type} : ${shwData1.at(3).Donate_Value} : ${shwData1.at(3).Item}</h3>
+    <h3>${shwData1.at(4).Donate_Type} : ${shwData1.at(4).Donate_Value} : ${shwData1.at(4).Item}</h3>`
+
+  })
+
+}
+
+
