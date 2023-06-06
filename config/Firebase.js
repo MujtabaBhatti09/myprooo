@@ -98,7 +98,7 @@ if (signin != null || signin != undefined) {
               if (data == null) {
                 alert("Data Not Available");
               } else {
-                alert("Successfully Logged In");
+          // alert("Successfully Logged In");
                 window.location.replace("userdashboard.html");
               }
             });
