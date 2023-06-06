@@ -398,6 +398,8 @@ function getdata() {
   hdeRes.classList.remove("d-none")
   var shwresss = document.getElementById("shwresss")
   shwresss.style.display = "none"
+    var dcollect = document.getElementById("dCollection")
+  dcollect.classList.remove("d-none")
 
   var shwData = document.getElementById("shwData")
 
