@@ -286,7 +286,7 @@ donate_data.addEventListener("click", () => {
           .set({
             Donate_Key: key,
             Donate_Type: donnate_type,
-            Item: document.getElementById("down2").innerText,
+            Donate_Value: document.getElementById("down2").innerText,
 
           })
         : donnate_type == "Clothes"
@@ -414,7 +414,7 @@ function getdata() {
 
     shwData.innerHTML = `<h3>${shwData1.at(0).Donate_Type} : ${shwData1.at(0).Donate_Value}</h3>
     <h3>${shwData1.at(1).Donate_Type} : ${shwData1.at(1).Donate_Value} : ${shwData1.at(1).Item}</h3>
-    <h3>${shwData1.at(2).Donate_Type} : ${shwData1.at(2).Donate_Value} : ${shwData1.at(2).Item}</h3>
+    <h3>${shwData1.at(2).Donate_Type} : ${shwData1.at(2).Donate_Value}</h3>
     <h3>${shwData1.at(3).Donate_Type} : ${shwData1.at(3).Donate_Value} : ${shwData1.at(3).Item}</h3>
     <h3>${shwData1.at(4).Donate_Type} : ${shwData1.at(4).Donate_Value} : ${shwData1.at(4).Item}</h3>`
 
