@@ -249,6 +249,8 @@ goods.addEventListener("click", (e) => {
 donate_data.addEventListener("click", () => {
   var id = localStorage.getItem("Current_User UID");
 
+console.log("Donated Successfully")
+
   let key = firebase
     .database()
     .ref("users/")
