@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body onload="winLoad()">
+<body id="dash" onload="winLoad()">
   <!-- Nav Head -->
 
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark" id="ftco-navbar">
@@ -70,6 +70,8 @@
   <!-- Select Category -->
   <div class="container p-3 mt-5 border rounded panelDiv">
     <h1 class="text-center">Donate Something</h1> <br>
+    <p class="text-muted">Make sure that before pressing the donate button, there must be a single category selected and must be filled.</p>
+    <br>
     <h3>Select What You Want To Donate With Us</h3>
     <div class="container dropdown">
       <button class="btn mt-3 dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
@@ -114,8 +116,7 @@
           </div>
         </span>
 
-        <input type="text" class="form-control rounded" id="groceryitem1" placeholder="Grocery Items"
-          >
+        <input type="text" class="form-control rounded" id="groceryitem1" placeholder="Grocery Items">
       </div>
       <!-- For Food Donation -->
 
@@ -156,7 +157,7 @@
           </div>
         </span>
 
-        <input type="number" class="form-control rounded" name="qty" id="clothvall" value="0">
+        <input type="number" class="form-control rounded" name="qty" id="clothvall" >
 
       </div>
 
@@ -167,7 +168,7 @@
         <span class="input-group-text">Goods Item</span>
         <input type="text" class="form-control rounded" name="qty" id="gooditem1" placeholder="Enter Items.">
         <span class="input-group-text">Quantity</span>
-        <input type="number" class="form-control rounded" name="qty" id="goodval" value="0">
+        <input type="number" class="form-control rounded" name="qty" id="goodval" placeholder="Quantity" >
 
       </div>
 
@@ -175,7 +176,8 @@
 
 
       <!-- Donate Button -->
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center mt-5">
+
         <button type="submit" class="text-right mt-3 btn ms-5" id="donate_data">Donate</button>
         <button type="submit" class="text-right mt-3 btn ms-5" id="shwresss" onclick="getdata()">show result</button>
 
@@ -185,16 +187,17 @@
     </div>
   </div>
 
-  <div class="container p-3 mt-5 border rounded d-none panelDiv" id="hdeRes">
-    <h1 class="text-center">Donation Result</h1>
-    <div class="border container" id="shwData">
+  <div class="container p-3 mt-5 d-none panelDiv" id="hdeRes">
+    <h1 class="text-center">Donation History</h1>
+    <div class="bg-light gy-5 p-2 d-flex flex-column" id="shwData">
     </div>
-    <p class="d-none" id="dCollection">Our Organization's Admin will contact you in a while, after that our rider will collect Donation from your Door Step after 2 days.</p>
+    <p class="d-none" id="dCollection">Our Organization's Admin will contact you in a while, after that our rider will collect Donation from your Door Step after 2 Working days.</p>
   </div>
 
 
   <!-- End User DashBoard -->
 
+<!-- Footer Section -->
   <footer class="footer mt-3">
     <div class="container">
       <div class="row mb-5">
@@ -257,7 +260,7 @@
           <p>
 
             Copyright &copy;
-            <script>document.write(new Date().getFullYear());</script> All rights reserved by E-Donation
+            <script>document.write(new Date().getFullYear());</script> All rights reserved by SHINE-ON-TRUST
           </p>
 
         </div>
@@ -265,6 +268,21 @@
     </div>
   </footer>
 
+<div id="model" class="modelBackground d-none">
+
+</div>
+
+<div id="modell" class="model d-none">
+
+  <h4 class="active">Thanks For Donating</h4>
+
+  <div class="wrapper"> <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/> <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+  </svg>
+  </div>
+
+  <p class="mt-3">Our Organization's Admin will contact you in a while, after that our rider will collect Donation from your Door Step after 2 Working days.</p>
+  <button class="btn" id="modalbtn"><h4 class="text-center">Close</h4></button>
+</div>
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
       <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />

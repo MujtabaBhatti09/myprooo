@@ -9,9 +9,6 @@ var signin = document.getElementById("signin");
 var signout = document.getElementById("signout");
 var donate_data = document.getElementById("donate_data");
 
-var grcy_qnty_data = "";
-
-var donnate_type = "";
 
 
 
@@ -66,6 +63,9 @@ if (signup != undefined || signup != null) {
         });
     }
   });
+
+
+
 }
 
 if (signin != null || signin != undefined) {
@@ -96,9 +96,9 @@ if (signin != null || signin != undefined) {
               var data = snap.val();
               // console.log(data)
               if (data == null) {
-                alert("Data Not Available");
+                alert("User Not Found");
               } else {
-          // alert("Successfully Logged In");
+                // alert("Successfully Logged In");
                 window.location.replace("userdashboard.html");
               }
             });
@@ -134,6 +134,7 @@ var ccsh = document.getElementById("cchg");
 
 var select = document.getElementById("sel");
 select.addEventListener("click", (e) => {
+  e.preventDefault();
   console.log(e.target.value);
   donnate_type = e.target.value;
 
@@ -141,7 +142,6 @@ select.addEventListener("click", (e) => {
   var content = document.getElementById("dropdownMenu2");
 
   content.innerHTML = `${e.target.value}`;
-  e.preventDefault();
 });
 
 // For Grocery Items
@@ -246,10 +246,28 @@ goods.addEventListener("click", (e) => {
   b.classList.remove("d-none");
 });
 
+//Current Date
+
+var currentdate = new Date()
+
+var hours = currentdate.getHours()
+var ampm = hours >= 12 ? 'PM' : 'AM'
+hours = hours % 12
+hours = hours ? hours : 12
+
+var datetime = currentdate.getDate() + "/"
+  + (currentdate.getMonth() + 1) + "/"
+  + currentdate.getFullYear() + " @ "
+  + hours + ":"
+  + currentdate.getMinutes() + ":"
+  + currentdate.getSeconds() + " " + ampm
+
+///
+
 donate_data.addEventListener("click", () => {
+
   var id = localStorage.getItem("Current_User UID");
 
-console.log("Donated Successfully")
 
   let key = firebase
     .database()
@@ -264,11 +282,13 @@ console.log("Donated Successfully")
       .child(id + "/Donate/" + key.toString())
       .set({
         Donate_Key: key,
+        Time: datetime,
+        Item: "PKR",
         Donate_Type: donnate_type,
         Donate_Value: cashamount.value,
       })
     : donnate_type == "Grocery"
-      ? // console.log(groceryitem1.value)
+      ?
 
       firebase
         .database()
@@ -276,6 +296,7 @@ console.log("Donated Successfully")
         .child(id + "/Donate/" + key.toString())
         .set({
           Donate_Key: key,
+          Time: datetime,
           Donate_Type: donnate_type,
           Item: grcy_qnty_data,
           Donate_Value: groceryitem1.value,
@@ -287,6 +308,7 @@ console.log("Donated Successfully")
           .child(id + "/Donate/" + key.toString())
           .set({
             Donate_Key: key,
+            Time: datetime,
             Donate_Type: donnate_type,
             Donate_Value: document.getElementById("down2").innerText,
 
@@ -298,6 +320,7 @@ console.log("Donated Successfully")
             .child(id + "/Donate/" + key.toString())
             .set({
               Donate_Key: key,
+              Time: datetime,
               Donate_Type: donnate_type,
               Item: document.getElementById("down3").innerText,
               Donate_Value: clothval.value,
@@ -309,12 +332,17 @@ console.log("Donated Successfully")
               .child(id + "/Donate/" + key.toString())
               .set({
                 Donate_Key: key,
+                Time: datetime,
                 Donate_Type: donnate_type,
                 Item: gooditem1.value,
                 Donate_Value: goodvall.value,
               })
             : console.log("new data");
 
+  var appendModelBg = document.getElementById("model")
+  var appendModel = document.getElementById("modell")
+  appendModelBg.classList.remove("d-none")
+  appendModel.classList.remove("d-none")
 });
 
 // Pushing GoodItem Donation To Database
@@ -362,7 +390,7 @@ function getData1() {
   var subject = document.getElementById("subject").value
   var msgbox = document.getElementById("messagebox").value
 
-  firebase.database().ref("Users_Feedback/").set({
+  firebase.database().ref("Users_Feedback/").push({
 
     Name: fname,
     Email: uemail,
@@ -380,12 +408,16 @@ function winLoad() {
 
   var id2 = localStorage.getItem("Current_User UID")
 
-  console.log(id2)
+  // console.log(id2)
 
   firebase.database().ref("users/").child(id2 + "/").once('value', snap => {
+
     var objj = snap.toJSON()
-    console.log(Object.values(objj).at(4))
-    dName.innerHTML = `<li class="nav-item active mx-2"><a href="#" class="nav-link">${Object.values(objj).at(4)}</a></li>`
+
+    // console.log(objj.name)
+
+    dName.innerHTML = `<li class="nav-item active mx-2"><a class="nav-link">Hello, ${objj.name}</a></li>`
+
   })
 
 }
@@ -395,12 +427,14 @@ function winLoad() {
 
 
 function getdata() {
-  
+
   var hdeRes = document.getElementById("hdeRes")
   hdeRes.classList.remove("d-none")
+
   var shwresss = document.getElementById("shwresss")
   shwresss.style.display = "none"
-    var dcollect = document.getElementById("dCollection")
+
+  var dcollect = document.getElementById("dCollection")
   dcollect.classList.remove("d-none")
 
   var shwData = document.getElementById("shwData")
@@ -409,19 +443,85 @@ function getdata() {
   // console.log(firebase)
   firebase.database().ref(`/users/${id}`).child(`Donate`).once('value', (snap) => {
 
+
     const data11 = snap.toJSON()
-    const shwData1 = Object.values(data11)
 
-    console.log(shwData1)
 
-    shwData.innerHTML = `<h3>${shwData1.at(0).Donate_Type} : ${shwData1.at(0).Donate_Value}</h3>
-    <h3>${shwData1.at(1).Donate_Type} : ${shwData1.at(1).Donate_Value} : ${shwData1.at(1).Item}</h3>
-    <h3>${shwData1.at(2).Donate_Type} : ${shwData1.at(2).Donate_Value}</h3>
-    <h3>${shwData1.at(3).Donate_Type} : ${shwData1.at(3).Donate_Value} : ${shwData1.at(3).Item}</h3>
-    <h3>${shwData1.at(4).Donate_Type} : ${shwData1.at(4).Donate_Value} : ${shwData1.at(4).Item}</h3>`
+    var data = Object.values(data11)
+
+
+    data.forEach(function (data) {
+
+
+      shwData.innerHTML += `
+      <div class="card card-body border bg-light pb-0 pt-3">
+      <div class="row">
+      <div class="col-md-8 col-sm-6">
+      <h3><p class="card-text"> Category : ${data.Donate_Type}</p></h3>
+      <h5 class="card-text text-muted mt-4"> Type : ${data.Item}</h5>
+      <h5 class="card-text text-muted"> Donated Value: ${data.Donate_Value}</h5>
+        <p class="card-title text-muted">${data.Time}</p>
+          </div>
+          </div>
+          </div>
+          
+          `;
+    });
+
+
+
+    // console.log(data11)
+
+    // const shwData1 = data11
+
+    // console.log(shwData1.uid)
+
+    // shwData.innerHTML = shwData1.map((v, i) => {
+    //   return `<h3> ${i} : ${v.Donate_Key} </h3>`
+    // })
+
+
 
   })
 
 }
 
 
+var modalBtn = document.getElementById("modalbtn")
+
+modalBtn.addEventListener("click", e => {
+
+  var modelBg = document.getElementById("model")
+  var model = document.getElementById("modell")
+
+  modelBg.classList.add("d-none")
+  model.classList.add("d-none")
+
+})
+
+
+
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+
+
+
+// Now Mapping Donors On Admin Panel
+
+if (localStorage.getItem("Current_User UID") == null) {
+
+  var dash = document.getElementById("dash")
+
+  dash.innerHTML = `
+  
+<div class="notfound d-flex justify-content-center align-items-center flex-column">
+
+  <h1>Error-404 Not Found</h1>
+  
+  <h5>Login First</h5>
+
+  </div>
+
+  `
+
+}
