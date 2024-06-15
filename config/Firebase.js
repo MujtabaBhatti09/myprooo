@@ -80,11 +80,6 @@ if (signin != null || signin != undefined) {
         .then((result) => {
           var user = result.user;
 
-          // console.log(user)
-          // console.log("User Email :" + user.email)
-          // console.log("User UID :" + user.uid)
-          // console.log(result.user)
-
           localStorage.setItem("Current_User UID", user.uid);
 
           firebase
@@ -106,7 +101,7 @@ if (signin != null || signin != undefined) {
         .catch((e) => {
           console.log(e.code);
           console.log(e.message);
-          alert(e.message);
+          alert(e.code);
         });
     }
   });
